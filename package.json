@@ -5,19 +5,31 @@
   "description": "Practice React by incorporating my _2DNote project",
   "main": "index.js",
   "scripts": {
-    "start": "",
-    "build": "",
+    "start": "open build/index.html",
+    "build": "babel src/index.js --out-file build/index.js; parcel build src/index.html --out-dir build --no-source-maps --no-cache; rm -rf dist; rm build/src.*.js",
     "test": "jest --passWithNoTests",
     "lint": "eslint src/*.js --max-warnings=0",
-    "fix": "eslint --fix src/*.js"
+    "fix": "eslint --fix src/*.js",
+    "fast": "nodemon -w src/index.js -x 'npm run lint; npm run test; npm run build; npm run start;'"
   },
   "author": "hchiam",
   "license": "MIT",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.18.0",
     "husky": "^3.0.9",
-    "jest-cli": "^24.9.0"
+    "jest-cli": "^24.9.0",
+    "parcel": "^1.12.4",
+    "parcel-plugin-inline-source": "^1.0.0"
   },
   "husky": {
     "hooks": {
