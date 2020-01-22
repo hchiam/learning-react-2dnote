@@ -10,7 +10,7 @@
     "test": "jest --passWithNoTests",
     "lint": "eslint src/*.js --max-warnings=0",
     "fix": "eslint --fix src/*.js",
-    "fast": "nodemon -w src/index.js -x 'npm run lint; npm run test; npm run build; npm run start;'"
+    "fast": "nodemon -e js,html -w src -x 'npm run lint; npm run test; npm run build; npm run start;'"
   },
   "author": "hchiam",
   "license": "MIT",
