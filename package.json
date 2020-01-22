@@ -6,15 +6,16 @@
   "main": "index.js",
   "scripts": {
     "start": "open build/index.html",
-    "build": "babel src/index.js --out-file build/index.js; parcel build src/index.html --out-dir build --no-source-maps --no-cache; rm -rf dist; rm build/src.*.js",
+    "build": "rm build/*; babel src/index.js --out-file build/index.js; parcel build src/index.html --out-dir build --no-source-maps --no-cache; rm -rf dist; rm build/src.*.js",
     "test": "jest --passWithNoTests",
     "lint": "eslint src/*.js --max-warnings=0",
     "fix": "eslint --fix src/*.js",
-    "fast": "nodemon -e js,html -w src -x 'npm run lint; npm run test; npm run build; npm run start;'"
+    "fast": "nodemon -e js,html -w src -x 'npm run fix; npm run lint; npm run test; npm run build; npm run start;'"
   },
   "author": "hchiam",
   "license": "MIT",
   "dependencies": {
+    "2dnote": "^1.8.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },

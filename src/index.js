@@ -37,7 +37,6 @@ class Clock extends React.Component {
   render() { // 2 (updates diff when this.setState is called)
     return (
       <div>
-        <h1>Hello, world!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
@@ -54,7 +53,18 @@ class Toggle extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  getState(callback) {
+    this.setState((prevState) => {
+      callback(prevState);
+    });
+  }
+
   handleClick() {
+    this.getState((state) => {
+      if (!state.isToggleOn) {
+        _2DNote.warnExitedView();
+      }
+    });
     this.setState((state) => ({
       isToggleOn: !state.isToggleOn,
     }));
@@ -71,6 +81,7 @@ class Toggle extends React.Component {
 
 ReactDOM.render(
     <div>
+      <h1>Turn on audio and click anywhere on this page!</h1>
       <Clock />
       <Toggle />
     </div>,

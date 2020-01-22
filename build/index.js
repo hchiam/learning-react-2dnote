@@ -38,7 +38,7 @@ class Clock extends React.Component {
 
   render() {
     // 2 (updates diff when this.setState is called)
-    return React.createElement("div", null, React.createElement("h1", null, "Hello, world!"), React.createElement("h2", null, "It is ", this.state.date.toLocaleTimeString(), "."));
+    return React.createElement("div", null, React.createElement("h2", null, "It is ", this.state.date.toLocaleTimeString(), "."));
   }
 
 }
@@ -54,7 +54,18 @@ class Toggle extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  getState(callback) {
+    this.setState(prevState => {
+      callback(prevState);
+    });
+  }
+
   handleClick() {
+    this.getState(state => {
+      if (!state.isToggleOn) {
+        _2DNote.warnExitedView();
+      }
+    });
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
@@ -68,4 +79,4 @@ class Toggle extends React.Component {
 
 }
 
-ReactDOM.render(React.createElement("div", null, React.createElement(Clock, null), React.createElement(Toggle, null)), document.getElementById('root'));
+ReactDOM.render(React.createElement("div", null, React.createElement("h1", null, "Turn on audio and click anywhere on this page!"), React.createElement(Clock, null), React.createElement(Toggle, null)), document.getElementById('root'));
