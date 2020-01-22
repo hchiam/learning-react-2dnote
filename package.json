@@ -1,0 +1,27 @@
+{
+  "name": "learning-react-2dnote",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Practice React by incorporating my _2DNote project",
+  "main": "index.js",
+  "scripts": {
+    "start": "",
+    "build": "",
+    "test": "jest --passWithNoTests",
+    "lint": "eslint src/*.js --max-warnings=0",
+    "fix": "eslint --fix src/*.js"
+  },
+  "author": "hchiam",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-google": "^0.14.0",
+    "husky": "^3.0.9",
+    "jest-cli": "^24.9.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test"
+    }
+  }
+}
